@@ -1,3 +1,5 @@
-export function buildWhatsAppUrl(message: string): string {
-  return `https://wa.me/?text=${encodeURIComponent(message)}`;
+export function buildWhatsAppUrl(message: string, phoneNumber = ""): string {
+  const safeNumber = phoneNumber.replace(/\D/g, "");
+  const recipient = safeNumber ? `/${safeNumber}` : "/";
+  return `https://wa.me${recipient}?text=${encodeURIComponent(message)}`;
 }

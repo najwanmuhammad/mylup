@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   JOURNEY_VERSION,
+  LAST_CHAPTER,
   createInitialJourneyState,
   journeyReducer,
   restoreJourneyState,
@@ -30,5 +31,17 @@ describe("journeyReducer", () => {
         JSON.stringify({ version: JOURNEY_VERSION - 1, chapter: 8 }),
       ),
     ).toEqual(createInitialJourneyState());
+  });
+
+  it("clamps restored chapters to the seven-scene journey", () => {
+    expect(
+      restoreJourneyState(
+        JSON.stringify({
+          version: JOURNEY_VERSION,
+          chapter: 99,
+          completed: [],
+        }),
+      ).chapter,
+    ).toBe(LAST_CHAPTER);
   });
 });

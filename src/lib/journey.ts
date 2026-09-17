@@ -1,5 +1,5 @@
-export const JOURNEY_VERSION = 1;
-export const LAST_CHAPTER = 11;
+export const JOURNEY_VERSION = 2;
+export const LAST_CHAPTER = 7;
 
 export type JourneyState = {
   version: number;

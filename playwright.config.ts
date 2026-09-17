@@ -6,7 +6,7 @@ export default defineConfig({
   retries: 0,
   reporter: "line",
   use: {
-    baseURL: "http://localhost:3000",
+    baseURL: "http://localhost:3100",
     trace: "on-first-retry",
   },
   projects: [
@@ -14,8 +14,8 @@ export default defineConfig({
     { name: "desktop-chromium", use: { ...devices["Desktop Chrome"] } },
   ],
   webServer: {
-    command: "bun run dev",
-    url: "http://localhost:3000",
+    command: "bun run dev -- --port 3100",
+    url: "http://localhost:3100",
     reuseExistingServer: true,
     timeout: 120_000,
   },
